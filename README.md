@@ -1,6 +1,5 @@
 # AHU-AI-Repository   安徽大学人工智能学院资源仓库
-<a><img src="https://img.shields.io/github/forks/{DylanAo}/{AHU-AI-Repository}.svg"></a>
-<a><img src="https://img.shields.io/github/stars/{DylanAo}/{AHU-AI-Repository}.svg"></a>
+![1](https://img.shields.io/badge/AHU-AI-blue)
 ### 简介
 这是一个致力于安徽大学人工智能学院学习交流的平台<br>
 #### 为什么要创建这个仓库？
