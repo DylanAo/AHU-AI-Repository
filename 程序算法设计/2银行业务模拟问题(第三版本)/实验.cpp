@@ -1,11 +1,5 @@
-/**
- * ÒøĞĞÒµÎñÄ£ÄâÏµÍ³
- * ºËĞÄ´úÂë
- * **Ñ§Éú°æ**
- * **ĞèÒª²¹³ä»ù´¡´úÂë**
- */
+// 8:00ä¸Šç­ï¼Œ16.00ä¸‹ç­ï¼Œ8ä¸ªå°æ—¶ï¼Œæš‚ä¸æ”¯æŒåˆä¼‘ä¸å‘¨å…­æ—¥ä¼‘æ¯ï¼Œåç»­å¯èƒ½å¢åŠ åŠŸèƒ½
 
-// 8:00ÉÏ°à£¬16.00ÏÂ°à£¬°Ë¸öĞ¡Ê±
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -13,18 +7,18 @@ using namespace std;
 
 const int WindowsNum = 4;
 int AllTime = 480;
-int LatestTime = 450; // ¹Ë¿Í×îÍíµ½´ïÊ±¼ä
+int LatestTime = 450; // é¡¾å®¢æœ€æ™šåˆ°è¾¾æ—¶é—´
 
-const int MaxServiceNum = 50; //ÒøĞĞÃ¿ÈÕ×î¸ß·şÎñÈË´Î
-int MinServiceNum = 40; //ÒøĞĞÃ¿ÈÕ×îµÍ·şÎñÈË´Î
+const int MaxServiceNum = 50; //é“¶è¡Œæ¯æ—¥æœ€é«˜æœåŠ¡äººæ¬¡
+int MinServiceNum = 40; //é“¶è¡Œæ¯æ—¥æœ€ä½æœåŠ¡äººæ¬¡
 
-int MaxServiceTime = 30; // Ã¿ÈË×î¸ß·şÎñÊ±³¤
-int MinServiceTime = 5; // Ã¿ÈË×îµÍ·şÎñÊ±³¤
+int MaxServiceTime = 30; // æ¯äººæœ€é«˜æœåŠ¡æ—¶é•¿
+int MinServiceTime = 5; // æ¯äººæœ€ä½æœåŠ¡æ—¶é•¿
 
 typedef struct Customer {
-    int id; // ¹Ë¿ÍĞòºÅ
-    int ArrivalTime; // µ½´ïÊ±¿Ì
-    int ServiceTime; // ·şÎñÊ±¼ä
+    int id; // é¡¾å®¢åºå·
+    int ArrivalTime; // åˆ°è¾¾æ—¶åˆ»
+    int ServiceTime; // æœåŠ¡æ—¶é—´
 } Customer;
 
 typedef struct Queue
@@ -36,17 +30,17 @@ typedef struct Queue
 };
 
 typedef struct Window {
-    int CurRemainingServiceTime; // µ±Ç°ÕıÔÚ°ìÀíÒµÎñµÄ¿Í»§µÄÊ£Óà·şÎñÊ±³¤
-    int RemainingServiceTime; // ×ÜÊ£Óà·şÎñÊ±³¤
-    int TotalWaitTime; // Í³¼Æ¸Ã·şÎñ´°¿ÚËùÓĞ¹Ë¿ÍµÄµÈ´ıÊ±³¤
-    Queue WindowsQueue; // ·şÎñ´°¿Ú¶ÓÁĞ
+    int CurRemainingServiceTime; // å½“å‰æ­£åœ¨åŠç†ä¸šåŠ¡çš„å®¢æˆ·çš„å‰©ä½™æœåŠ¡æ—¶é•¿
+    int RemainingServiceTime; // æ€»å‰©ä½™æœåŠ¡æ—¶é•¿
+    int TotalWaitTime; // ç»Ÿè®¡è¯¥æœåŠ¡çª—å£æ‰€æœ‰é¡¾å®¢çš„ç­‰å¾…æ—¶é•¿
+    Queue WindowsQueue; // æœåŠ¡çª—å£é˜Ÿåˆ—
 } Window;
 
 typedef struct Bank {
-    int OpenTime, CloseTime; // ÒøĞĞÉÏÏÂ°àÊ±¼ä
-    int NumToService; // ĞèÒª·şÎñµÄ×ÜÈËÊı
-    Window windows[WindowsNum]; // ¼¸¸ö·şÎñ´°¿Ú
-    Queue BankQueue; // ÒÑÉú³ÉµÄ¹Ë¿Í¶ÓÁĞ
+    int OpenTime, CloseTime; // é“¶è¡Œä¸Šä¸‹ç­æ—¶é—´
+    int NumToService; // éœ€è¦æœåŠ¡çš„æ€»äººæ•°
+    Window windows[WindowsNum]; // å‡ ä¸ªæœåŠ¡çª—å£
+    Queue BankQueue; // å·²ç”Ÿæˆçš„é¡¾å®¢é˜Ÿåˆ—
 } Bank;
 
 
@@ -94,19 +88,19 @@ void BubbleSort(Queue& Q)
             }
 }
 
-void printBank(Bank* bank, int time) // ´òÓ¡µ±Ç°ÒøĞĞ×´Ì¬
+void printBank(Bank* bank, int time) // æ‰“å°å½“å‰é“¶è¡ŒçŠ¶æ€
 {
     cout << endl;
-    cout << "=====µ±Ç°Ê±¼äÎª " << RealTimeHour(time) << " µã " << RealTimeMin(time) << " ·Ö=====" << endl;
+    cout << "=====å½“å‰æ—¶é—´ä¸º " << RealTimeHour(time) << " ç‚¹ " << RealTimeMin(time) << " åˆ†=====" << endl;
     for (int i = 0; i < WindowsNum; ++i)
     {
         if (bank->windows[i].WindowsQueue.size == 0)
         {
-            cout << "Windows[ " << i << " ]ÏÖÎŞ¹Ë¿Í" << endl;
+            cout << "Windows[ " << i << " ]ç°æ— é¡¾å®¢" << endl;
         }
         else
         {
-            cout << "Windows[ " << i << " ]ÏÖÓĞ¹Ë¿Í" << bank->windows[i].WindowsQueue.size << "ÈË" << endl;
+            cout << "Windows[ " << i << " ]ç°æœ‰é¡¾å®¢" << bank->windows[i].WindowsQueue.size << "äºº" << endl;
             for (int j = bank->windows[i].WindowsQueue.front; j != bank->windows[i].WindowsQueue.rear; j++)
                 cout << bank->windows[i].WindowsQueue.data[j].id << "   " << endl;
         }
@@ -115,97 +109,97 @@ void printBank(Bank* bank, int time) // ´òÓ¡µ±Ç°ÒøĞĞ×´Ì¬
 }
 
 void GetCustomers(Bank* bank)
-{//Éú³ÉËùÓĞ¹Ë¿Í
+{//ç”Ÿæˆæ‰€æœ‰é¡¾å®¢
     for (int i = 0; i < genRand(MinServiceNum, MaxServiceNum); i++)
     {
         Customer customer =
         {
         i,
-        genRand(0, LatestTime), // µ½´ïÊ±¿Ì
-        genRand(MinServiceTime, MaxServiceTime) // ·şÎñÊ±¼ä
-        }; // Éú³ÉĞÂ¹Ë¿Í
-        cout << "¹Ë¿Í " << customer.id << " ½«ÓÚ "
+        genRand(0, LatestTime), // åˆ°è¾¾æ—¶åˆ»
+        genRand(MinServiceTime, MaxServiceTime) // æœåŠ¡æ—¶é—´
+        }; // ç”Ÿæˆæ–°é¡¾å®¢
+        cout << "é¡¾å®¢ " << customer.id << " å°†äº "
             << RealTimeHour(customer.ArrivalTime) << ":" << RealTimeMin(customer.ArrivalTime) 
-            << " µ½´ï£¬ĞèÒª·şÎñÊ±¼äÎª " << RealTimeMin(customer.ServiceTime) << " ·ÖÖÓ " << endl;
-        enqueue(bank->BankQueue, customer); // ½«Éú³ÉµÄ¹Ë¿ÍÈë¶Ó
+            << " åˆ°è¾¾ï¼Œéœ€è¦æœåŠ¡æ—¶é—´ä¸º " << RealTimeMin(customer.ServiceTime) << " åˆ†é’Ÿ " << endl;
+        enqueue(bank->BankQueue, customer); // å°†ç”Ÿæˆçš„é¡¾å®¢å…¥é˜Ÿ
         bank->NumToService += 1;
     }
     BubbleSort(bank->BankQueue);
 
-    cout << "½ñÈÕ¹Ë¿Í¹² " << bank->NumToService << " ÈË£¬ÅÅĞòºó£º" << endl; //²ÙÄãÂè
+    cout << "ä»Šæ—¥é¡¾å®¢å…± " << bank->NumToService << " äººï¼Œæ’åºåï¼š" << endl; //æ“ä½ å¦ˆ
     for (int i = 0; i < bank->NumToService ; i++)
     {
         Customer customer = bank->BankQueue.data[i];
-        cout << "¹Ë¿Í " << customer.id << " ½«ÓÚ "
+        cout << "é¡¾å®¢ " << customer.id << " å°†äº "
             << RealTimeHour(customer.ArrivalTime) << ":" << RealTimeMin(customer.ArrivalTime)
-            << " µ½´ï£¬ĞèÒª·şÎñÊ±¼äÎª " << RealTimeMin(customer.ServiceTime) << " ·ÖÖÓ " << endl;
+            << " åˆ°è¾¾ï¼Œéœ€è¦æœåŠ¡æ—¶é—´ä¸º " << RealTimeMin(customer.ServiceTime) << " åˆ†é’Ÿ " << endl;
     }
 }
 
-void OpenForDay(Bank* bank) // ³õÊ¼»¯º¯Êı
+void OpenForDay(Bank* bank) // åˆå§‹åŒ–å‡½æ•°
 {
     bank->OpenTime = 0;
     bank->CloseTime = AllTime;
     bank->NumToService = 0;
 
-    for (int i = 0; i < WindowsNum; ++i) // ³õÊ¼»¯·şÎñ´°¿Ú
+    for (int i = 0; i < WindowsNum; ++i) // åˆå§‹åŒ–æœåŠ¡çª—å£
     { 
         bank->windows[i].CurRemainingServiceTime = 0;
         bank->windows[i].RemainingServiceTime = 0;
         bank->windows[i].TotalWaitTime = 0;
-        initQueue(bank->windows[i].WindowsQueue); // ³õÊ¼»¯·şÎñ´°¿Ú¶ÓÁĞ
+        initQueue(bank->windows[i].WindowsQueue); // åˆå§‹åŒ–æœåŠ¡çª—å£é˜Ÿåˆ—
     }
-    initQueue(bank->BankQueue); // ³õÊ¼»¯ÒÑÉú³ÉµÄ¹Ë¿Í¶ÓÁĞ
+    initQueue(bank->BankQueue); // åˆå§‹åŒ–å·²ç”Ÿæˆçš„é¡¾å®¢é˜Ÿåˆ—
 }
 
 void EventDriven(Bank* bank, Customer cur_customer, int now)
 {
-    int min = 0; // ÕÒµ½×î¶Ì·şÎñ´°¿Ú¶ÓÁĞ
+    int min = 0; // æ‰¾åˆ°æœ€çŸ­æœåŠ¡çª—å£é˜Ÿåˆ—
     for (int i = 0; i < WindowsNum; ++i) 
         if (bank->windows[i].WindowsQueue.size <= min) 
             min = i;
 
-    enqueue(bank->windows[min].WindowsQueue, cur_customer); // ¹Ë¿ÍÈë×î¶Ì¶Ó
-    cout << "¹Ë¿Í " << cur_customer.id << " ÓÚ "
+    enqueue(bank->windows[min].WindowsQueue, cur_customer); // é¡¾å®¢å…¥æœ€çŸ­é˜Ÿ
+    cout << "é¡¾å®¢ " << cur_customer.id << " äº "
         << RealTimeHour(now) << ":" << RealTimeMin(now)
-        << " µ½´ï£¬½øÈë " << min << " ºÅ·şÎñ´°¿Ú," 
-        << "ĞèÒª·şÎñÊ±¼äÎª " << RealTimeMin(cur_customer.ServiceTime) << " ·ÖÖÓ " << endl;
+        << " åˆ°è¾¾ï¼Œè¿›å…¥ " << min << " å·æœåŠ¡çª—å£," 
+        << "éœ€è¦æœåŠ¡æ—¶é—´ä¸º " << RealTimeMin(cur_customer.ServiceTime) << " åˆ†é’Ÿ " << endl;
 
-    // Í³¼ÆÊ±³¤
-    if (bank->windows[min].RemainingServiceTime > 0)  // 1. Í³¼ÆµÈ´ıÊ±³¤£»Òª¿¼ÂÇµ½Ã¿¸öÈËµÄµÈ´ıÊ±³¤£¬ËùÒÔÒªÀÛ¼ÓÊ£Óà·şÎñÊ±³¤
+    // ç»Ÿè®¡æ—¶é•¿
+    if (bank->windows[min].RemainingServiceTime > 0)  // 1. ç»Ÿè®¡ç­‰å¾…æ—¶é•¿ï¼›è¦è€ƒè™‘åˆ°æ¯ä¸ªäººçš„ç­‰å¾…æ—¶é•¿ï¼Œæ‰€ä»¥è¦ç´¯åŠ å‰©ä½™æœåŠ¡æ—¶é•¿
         bank->windows[min].TotalWaitTime += bank->windows[min].RemainingServiceTime;
-    bank->windows[min].TotalWaitTime += cur_customer.ServiceTime; // 2. Í³¼Æ·şÎñÊ±³¤
+    bank->windows[min].TotalWaitTime += cur_customer.ServiceTime; // 2. ç»Ÿè®¡æœåŠ¡æ—¶é•¿
 
     if (bank->windows[min].RemainingServiceTime == 0)
-        bank->windows[min].CurRemainingServiceTime = cur_customer.ServiceTime; // 3. ×ÜÊ£Óà·şÎñÊ±³¤Îª0£¬ËµÃ÷¸Ã¿Í»§Îªµ±Ç°¶ÓÁĞ¡°µÚÒ»¸ö¡±¿Í»§
-    bank->windows[min].RemainingServiceTime += cur_customer.ServiceTime; // 4. Ë¢ĞÂ¸Ã¶ÓÁĞµÄÊ£Óà·şÎñÊ±³¤
+        bank->windows[min].CurRemainingServiceTime = cur_customer.ServiceTime; // 3. æ€»å‰©ä½™æœåŠ¡æ—¶é•¿ä¸º0ï¼Œè¯´æ˜è¯¥å®¢æˆ·ä¸ºå½“å‰é˜Ÿåˆ—â€œç¬¬ä¸€ä¸ªâ€å®¢æˆ·
+    bank->windows[min].RemainingServiceTime += cur_customer.ServiceTime; // 4. åˆ·æ–°è¯¥é˜Ÿåˆ—çš„å‰©ä½™æœåŠ¡æ—¶é•¿
 }
 
 void Clock(Bank* bank)
-{// Ê±¼äÍÆÒÆº¯Êı
-    for (int NowTime = 0; NowTime <= AllTime; NowTime++) // NowTime¾ÍÊÇÄ£ÄâÊ±¼ä£¬1´ú±í1·ÖÖÓ
+{// æ—¶é—´æ¨ç§»å‡½æ•°
+    for (int NowTime = 0; NowTime <= AllTime; NowTime++) // NowTimeå°±æ˜¯æ¨¡æ‹Ÿæ—¶é—´ï¼Œ1ä»£è¡¨1åˆ†é’Ÿ
     {
-        if (NowTime == getQueueHead(bank->BankQueue).ArrivalTime) // Ä³¸ö¹Ë¿ÍÊÇÊ±ºò½øÈ¥ÁË
+        if (NowTime == getQueueHead(bank->BankQueue).ArrivalTime) // æŸä¸ªé¡¾å®¢æ˜¯æ—¶å€™è¿›å»äº†
         {
             EventDriven(bank, getQueueHead(bank->BankQueue), NowTime); 
-            dequeue(bank->BankQueue); // ²İÄàÂí¹ö
+            dequeue(bank->BankQueue); // è‰æ³¥é©¬æ»š
         }
         else
         {
-            for (int i = 0; i < WindowsNum; ++i) // Ê±¼äÁ÷ÊÅ£¬Ã¿¸ö´°¿ÚµÄÊ£Óà·şÎñÊ±³¤-1
+            for (int i = 0; i < WindowsNum; ++i) // æ—¶é—´æµé€ï¼Œæ¯ä¸ªçª—å£çš„å‰©ä½™æœåŠ¡æ—¶é•¿-1
             {
-                if (bank->windows[i].RemainingServiceTime > 0) // ¸Ã·şÎñ´°¿Ú¶ÓÁĞ²»Îª¿ÕÊ±
+                if (bank->windows[i].RemainingServiceTime > 0) // è¯¥æœåŠ¡çª—å£é˜Ÿåˆ—ä¸ä¸ºç©ºæ—¶
                 {
                     bank->windows[i].RemainingServiceTime -= 1;
                     bank->windows[i].CurRemainingServiceTime -= 1;
-                    if (bank->windows[i].CurRemainingServiceTime == 0) // ¼õ1Ö®ºóµÈÓÚ0£¬ËµÃ÷Í·¹Ë¿Í°ìÍêÁË
+                    if (bank->windows[i].CurRemainingServiceTime == 0) // å‡1ä¹‹åç­‰äº0ï¼Œè¯´æ˜å¤´é¡¾å®¢åŠå®Œäº†
                     {
                         Customer sb = getQueueHead(bank->windows[i].WindowsQueue);
-                        cout << "¹Ë¿Í " << sb.id << " ÓÚ "
+                        cout << "é¡¾å®¢ " << sb.id << " äº "
                             << RealTimeHour(NowTime) << ":" << RealTimeMin(NowTime)
-                            << " ´Ó " << i << " ºÅ·şÎñ´°¿Ú×ßÈË" << endl;
-                        dequeue(bank->windows[i].WindowsQueue); // ×ßÈË
-                        if (bank->windows[i].WindowsQueue.size != 0) // ºóÃæ»¹ÓĞÈËÅÅ¶Ó£¬¸üĞÂÍ·¹Ë¿Í
+                            << " ä» " << i << " å·æœåŠ¡çª—å£èµ°äºº" << endl;
+                        dequeue(bank->windows[i].WindowsQueue); // èµ°äºº
+                        if (bank->windows[i].WindowsQueue.size != 0) // åé¢è¿˜æœ‰äººæ’é˜Ÿï¼Œæ›´æ–°å¤´é¡¾å®¢
                             bank->windows[i].CurRemainingServiceTime = getQueueHead(bank->windows[i].WindowsQueue).ServiceTime;
                     }
                 }
@@ -217,11 +211,11 @@ void Clock(Bank* bank)
 }
 
 double CloseForDay(Bank* bank)
-{ // ¼ÆËã¿Í»§Æ½¾ù¶ºÁôÊ±³¤
+{ // è®¡ç®—å®¢æˆ·å¹³å‡é€—ç•™æ—¶é•¿
     double total_time = 0;
     for (int i = 0; i < WindowsNum; ++i) 
         total_time += bank->windows[i].TotalWaitTime;
-    return total_time / bank->NumToService; // ¼ÙÉè¹ØÃÅÊ±Ã»ÓĞ°ìÀíÍê³ÉµÄ¹Ë¿Í¼ÌĞø°ìÀíÖ±µ½Íê³É
+    return total_time / bank->NumToService; // å‡è®¾å…³é—¨æ—¶æ²¡æœ‰åŠç†å®Œæˆçš„é¡¾å®¢ç»§ç»­åŠç†ç›´åˆ°å®Œæˆ
 }
 
 int main()
@@ -229,11 +223,11 @@ int main()
     //setSeed(2023)
     srand((unsigned)time(0));
     Bank* bank = (Bank*)malloc(sizeof(Bank));
-    cout << "±¾ÒøĞĞ8:00¿ªÃÅÓªÒµ, 18:00¹ØÃÅĞªÒµ,¹² " << WindowsNum << " ¸ö·şÎñ´°¿Ú" << endl << endl; // ¹ØÃÅ
+    cout << "æœ¬é“¶è¡Œ8:00å¼€é—¨è¥ä¸š, 18:00å…³é—¨æ­‡ä¸š,å…± " << WindowsNum << " ä¸ªæœåŠ¡çª—å£" << endl << endl; // å…³é—¨
     OpenForDay(bank);
     GetCustomers(bank);
     Clock(bank);
-    cout << "±¾ÒøĞĞ½ñÈÕÆ½¾ùµÈ´ıÊ±¼äÎª " << CloseForDay(bank) << " ·ÖÖÓ" << endl; // ¹ØÃÅ
+    cout << "æœ¬é“¶è¡Œä»Šæ—¥å¹³å‡ç­‰å¾…æ—¶é—´ä¸º " << CloseForDay(bank) << " åˆ†é’Ÿ" << endl; // å…³é—¨
  
     return 0;
 }
