@@ -9,6 +9,12 @@ void home() {
 	cout << "2. load a phone directory" << endl;
 	cout << "Enter your choice:";
 	cin >> choice;
+	if (choice > 0 && choice < 3) {
+		switch_mode(choice);
+	}
+	else{
+		wrong_choice();
+	}
 }
 
 void wrong_choice() {
@@ -132,6 +138,11 @@ void BIOS(phone_dir &dir, string name) {
 	case 5:
 		dir.clear();
 		cout << "already clear";
+		BIOS(dir, name);
+		break;
+	case 6:
+		dir.print();
+		BIOS(dir, name);
 		break;
 	default:
 		BIOS(dir, name);

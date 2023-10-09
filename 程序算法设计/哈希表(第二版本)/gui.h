@@ -5,3 +5,6 @@
 using namespace std;
 
 void home();
+void wrong_choice();
+void switch_mode(int mode);
+void BIOS(phone_dir& dir, string name);
