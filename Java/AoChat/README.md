@@ -23,7 +23,7 @@ public interface AoChatComponentBasic {
 其主要含义是，把组件添加到窗口中和设置控件位置
 ```
 ## AoChatFrame
-这里是AoChat主窗口，用于调用AoChat组件，所有的AoChat组件都是AoChat主窗口的成员函数
+这里是AoChat主窗口，用于调用AoChat组件，所有的AoChat组件都是AoChat主窗口的成员变量
 ```
 AoChatMenu menuBar = new AoChatMenu(rootPanel, frame);  // 新建菜单栏
 AoChatEnterTextArea textArea = new AoChatEnterTextArea(rootPanel); // 新建聊天输入框
