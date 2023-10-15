@@ -12,9 +12,11 @@ public class AoChatFrame {
 
     AoChatEnterTextArea textArea = new AoChatEnterTextArea(rootPanel); // 新建聊天输入框
 
-    AoChatButton buttons = new AoChatButton(rootPanel, textArea);  // 新建按钮组
+    AoChatButton buttons = new AoChatButton(rootPanel);  // 新建按钮组
 
     AoChatIPText ipText = new AoChatIPText(rootPanel); // 新建IP地址输入框
+
+    AoChatPortText portTxt = new AoChatPortText(rootPanel);
 
     AoChatLabel labels = new AoChatLabel(rootPanel);  //新建标签组
 
@@ -25,6 +27,7 @@ public class AoChatFrame {
     public AoChatFrame(){
         panelInit(); // 窗口初始化
         setPosition();  // 设置每个组件位置
+        buttons.addButtonActionListener(textArea, ipText, portTxt, messageArea); // 添加监视器
     }
 
     private void panelInit(){
@@ -45,6 +48,7 @@ public class AoChatFrame {
         buttons.setPosition();
         textArea.setPosition();
         ipText.setPosition();
+        portTxt.setPosition();
         labels.setPosition();
         messageArea.setPosition();
     }
@@ -161,21 +165,24 @@ class AoChatMenu implements AoChatComponentBasic {
 
 class AoChatButton implements AoChatComponentBasic {
 
+    public String sendTxt;
+    public String ip;
+    public int port;
+
     JButton sendButton = new JButton("发送");
 
     JButton newIPButton = new JButton("新建");
 
     JButton clearButton = new JButton("清空");
 
-    public AoChatButton(JPanel panel, AoChatEnterTextArea enterTextArea){
+    public AoChatButton(JPanel panel){
         add2Panel(panel);
-        addActionListener(enterTextArea);
         setPosition();
     }
 
     public void setPosition(){
         sendButton.setBounds(720, 520, 60, 30);
-        newIPButton.setBounds(94,70,60,30);
+        newIPButton.setBounds(113,70,60,30);
         clearButton.setBounds(650, 520, 60, 30);
     }
 
@@ -185,49 +192,64 @@ class AoChatButton implements AoChatComponentBasic {
         panel.add(clearButton);
     }
 
-    private void addActionListener(AoChatEnterTextArea enterTextArea){
-        sendButtonActionListener(enterTextArea);
-    }
 
 
-    private void sendButtonActionListener(AoChatEnterTextArea enterTextArea){
-        sendButton.addActionListener(new sendButtonMenuActionListener(enterTextArea));
-        newIPButton.addActionListener(new newIPActionListener());
-        clearButton.addActionListener(new clearButtonActionListener(enterTextArea));
+
+    void addButtonActionListener(AoChatEnterTextArea enterTextArea, AoChatIPText ipArea, AoChatPortText portArea, AoChatMessageArea messageArea){
+        sendButton.addActionListener(new sendButtonMenuActionListener(enterTextArea, messageArea));
+        newIPButton.addActionListener(new newIPActionListener(ipArea, portArea));
+        clearButton.addActionListener(new clearButtonActionListener(messageArea));
     }
 
     class sendButtonMenuActionListener implements ActionListener{
 
         AoChatEnterTextArea enterTextArea;
+        AoChatMessageArea messageArea;
 
-        public sendButtonMenuActionListener(AoChatEnterTextArea enterTextArea) {
+        public sendButtonMenuActionListener(AoChatEnterTextArea enterTextArea,  AoChatMessageArea messageArea) {
+
             this.enterTextArea = enterTextArea;
+            this.messageArea = messageArea;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            System.out.println("hi");
+            sendTxt = enterTextArea.text.getText();
+            enterTextArea.text.setText("");
+            new Thread(new AoChatSend(8889,ip,port, sendTxt)).start();
+            messageArea.messageArea.setText(messageArea.messageArea.getText() + "\n" + "发送:" + sendTxt);
         }
     }
+
     class newIPActionListener implements ActionListener{
+        AoChatIPText ipArea;
+        AoChatPortText portArea;
+        public newIPActionListener(AoChatIPText ipArea, AoChatPortText portArea){
+            this.ipArea = ipArea;
+            this.portArea = portArea;
+        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("new");
+            ip = ipArea.text.getText();
+            port = Integer.parseInt(portArea.text.getText());
+            //System.out.println(ip + port);
         }
     }
 
     class clearButtonActionListener implements ActionListener{
-        AoChatEnterTextArea enterTextArea;
+        AoChatMessageArea messageArea;
 
-        public clearButtonActionListener(AoChatEnterTextArea enterTextArea) {
-            this.enterTextArea = enterTextArea;
+        public clearButtonActionListener(AoChatMessageArea messageArea) {
+
+            this.messageArea = messageArea;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            enterTextArea.text.setText("");
+
+            messageArea.messageArea.setText("");
         }
     }
 }
@@ -237,14 +259,17 @@ class AoChatEnterTextArea implements AoChatComponentBasic {
     JTextArea text = new JTextArea();
 
     AoChatEnterTextArea(JPanel panel){
+
         add2Panel(panel);
     }
 
     public void add2Panel(JPanel panel){
+
         panel.add(text);
     }
 
     public void setPosition(){
+
         text.setBounds(180, 400, 600, 100);
     }
 }
@@ -252,6 +277,8 @@ class AoChatEnterTextArea implements AoChatComponentBasic {
 class AoChatIPText implements AoChatComponentBasic {
 
     JTextField text = new JTextField();
+
+
 
     AoChatIPText(JPanel panel){
 
@@ -265,13 +292,32 @@ class AoChatIPText implements AoChatComponentBasic {
 
     public void setPosition(){
 
-        text.setBounds(5, 40, 150, 30);
+        text.setBounds(5, 40, 100, 30);
+    }
+}
+
+class AoChatPortText implements AoChatComponentBasic{
+
+    JTextField text = new JTextField();
+
+    AoChatPortText(JPanel panel){
+        add2Panel(panel);
+    }
+
+    @Override
+    public void add2Panel(JPanel panel) {
+        panel.add(text);
+    }
+
+    @Override
+    public void setPosition() {
+        text.setBounds(110, 40, 65, 30);
     }
 }
 
 class AoChatLabel implements AoChatComponentBasic {
 
-    JLabel ipLabel = new JLabel("新建与目标IP对话");
+    JLabel ipLabel = new JLabel("新建目标IP和端口");
 
     AoChatLabel(JPanel panel){
 
@@ -287,7 +333,7 @@ class AoChatLabel implements AoChatComponentBasic {
     @Override
     public void setPosition() {
 
-        ipLabel.setBounds(5, 18, 100, 30);
+        ipLabel.setBounds(5, 18, 120, 30);
     }
 }
 
