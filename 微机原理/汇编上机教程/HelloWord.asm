@@ -1,0 +1,27 @@
+DATA SEGMENT
+    STR DB "Hello Word!"
+    LEN DW $ - STR
+DATA ENDS
+
+CODE SEGMENT
+    ASSUME CS:CODE,DS:DATA
+
+START:
+    MOV AX,DATA
+    MOV DS,AX
+    
+    MOV CX,[LEN]
+    MOV BX,OFFSET STR
+    
+
+PRINT:
+    MOV AH,02H
+    MOV DL,[BX]
+    INT 21H
+    INC BX
+    LOOP PRINT 
+
+    MOV AH,4CH
+    INT 21H
+CODE ENDS
+END START
