@@ -19,7 +19,7 @@ class phone_dir {
 private:
 	phone_dir_page dictionary[500];
 	int hash(string phone_number);
-	int hash_conflit(int conflit_hash_code);
+	int hash(int conflit_hash_code);
 	bool isEmpty(int index);
 public:
 	phone_dir();

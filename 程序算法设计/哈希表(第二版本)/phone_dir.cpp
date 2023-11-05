@@ -16,7 +16,7 @@ int phone_dir::hash(string phone_number) {
 	return tail % 100;
 }
 
-int phone_dir::hash_conflit(int conflit_hash_code) {
+int phone_dir::hash(int conflit_hash_code) {
 	// 发生冲突情况下取哈希值
 	int new_hash_code = 0;
 	if (new_hash_code < 500) {
@@ -41,7 +41,7 @@ bool phone_dir::add(phone_dir_page new_page) {
 	int count = 0;
 	int hash_code = hash(new_page.phone_number);
 	while (!isEmpty(hash_code)){  //非空，有冲突
-		hash_code = hash_conflit(hash_code);
+		hash_code = hash(hash_code);
 		count++;
 		if (count >= 500) {  // 超过上限，返回false
 			return false;
@@ -83,7 +83,7 @@ int phone_dir::find(string phone_number) {
 	int count = 0;
 	int hash_code = hash(phone_number);
 	while (dictionary[hash_code].phone_number != phone_number) {  //电话号不一样
-		hash_code = hash_conflit(hash_code);
+		hash_code = hash(hash_code);
 		count++;
 		if (count >= 500) {  // 超过上限，返回NOT_FIND
 			return NOT_FIND;
