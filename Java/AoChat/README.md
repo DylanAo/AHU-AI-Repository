@@ -1,79 +1,70 @@
+﻿                                                                
 # AoChat
-## 写在最前面
-已经用UDP协议实现了简单的网络编程，可以发送与接收信息
-## 题目要求
-![Alt text](picture/题目.png)
+## 基本操作与设置
+### 进入AoChat
+双击AoChat.exe进入软件，软件主界面默认如下图所示。
 
-## 效果截图
-![Alt text](picture/效果.png)
-![Alt text](picture/框架2.png)
-![Alt text](picture/关于.png)
-![Alt text](picture/主题.png)
-## 项目结构
-![Alt text](picture/结构.png)
-## AoChatComponentBasic
-这是一个接口，所有的AoChat组件都要实现这个接口
-```
-public interface AoChatComponentBasic {
-    void add2Panel(JPanel panel);
-    public void setPosition();
-}
+![](\image\1.png)
+### 退出Aochat
+方法一：点击软件右上角叉号退出AoChat<br>
+方法二：
+1. 点击左上角菜单栏中“设置”选项。
+2. 点击二级设置栏中“退出”选项，即可退出AoChat。
+### 查看AoChat软件基本信息
+1. 点击左上角菜单栏中“设置”选项。
 
-其主要含义是，把组件添加到窗口中和设置控件位置
-```
-## AoChatFrame
-这里是AoChat主窗口，用于调用AoChat组件，所有的AoChat组件都是AoChat主窗口的成员函数
-```
-AoChatMenu menuBar = new AoChatMenu(rootPanel, frame);  // 新建菜单栏
-AoChatEnterTextArea textArea = new AoChatEnterTextArea(rootPanel); // 新建聊天输入框
-AoChatButton buttons = new AoChatButton(rootPanel, textArea);  // 新建按钮组
-AoChatIPText ipText = new AoChatIPText(rootPanel); // 新建IP地址输入框
-AoChatLabel labels = new AoChatLabel(rootPanel);  //新建标签组
-AoChatMessageArea messageArea = new AoChatMessageArea(rootPanel);
-```
-### panelInit方法
-初始化窗口设置
-```
-private void panelInit(){
-        // 窗口初始化
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // 关闭窗口时关闭进程
-        frame.setContentPane(rootPanel);  // 面板给容器里面
-        frame.setResizable(false);  // 不准改大小
+2\. 点击二级设置栏中“关于AoChat”选项，即可查看基本信息。如下图所示。
 
-        frame.setSize(800, 600);  // 设置窗口大小
-        frame.setVisible(true); // 显示窗口
-    }
-```
-### setPosition方法
-调用AoChat组件中setPosition方法，设置组件位置
-```
-private void setPosition(){
-        // 设置每个组件位置
-        rootPanel.setLayout(null);// 禁用布局器
-        menuBar.setPosition();
-        buttons.setPosition();
-        textArea.setPosition();
-        ipText.setPosition();
-        labels.setPosition();
-        messageArea.setPosition();
-    }
-```
-### AoChat组件
-* AoChatMenu 
-  AoChat菜单栏
-* AoChatEnterTextArea 
-  AoChat文本输入框
-* AoChatButton 
-  AoChat按钮组
-* AoChatIPText 
-  AoChatIP地址输入框
-* AoChatLabel 
-  AoChat标签组
-* AoChatMessageArea 
-  AoChat文本信息展示区
+3\. 点击弹窗中“确认”按钮即可退出基本信息界面。
 
-## 网络编程
-### AoChatSend
-用于发送消息，开启了多线程
-### AoChatReceive
-用于接收消息，开启了多线程
+![](\image\2.png)
+### 改变AoChat主题
+您若是对AoChat默认主题不喜欢，可选择更换AoChat主题。
+1. 点击左上角菜单栏中“设置”选项。
+2. 点击二级设置栏中“关于主题”选项。
+3. 点击三级主题栏中“亮灰色”、“灰色”、“橙色”，即可更换对应颜色主题。下图展示AoChat橙色主题。
+![](\image\3.png)
+
+1. 右下侧聊天信息输入部分
+## 聊天
+### 新建聊天对象
+#### 新建聊天对象步骤
+1. 点击AoChat主界面IP地址输入框，输入IP地址
+2. 点击AoChat主界面端口地址输入框，输入端口地址。在AoChat中，收取端口地址为8888，为保证对方正确收取信息，此处建议您填写8888。
+3. 点击AoChat主界面中“确认”按钮。下方展示正确填写示意图。<br>
+![](\image\4.png)
+#### 正确填写
+若您正确的填写IP地址与端口并按下“确认”按钮，AoChat主界面在左侧会展示出您刚刚所填写的信息。如下图所示。
+![](\image\5.png)
+#### 错误填写提示
+1. 若您错误的填写了IP地址信息，您会收到如下图所示警告弹窗提示
+![](\image\6.png)
+
+2. 若您错误的填写了端口地址信息，您会收到如下图所示警告弹窗提示。
+![](\image\7.png)
+
+### 聊天信息的发送
+#### 输入聊天信息并发送
+1. 点击AoChat主界面右下侧聊天信息输入框，输入您要发送聊天信息。
+2. 点击AoChat主界面右下角“发送”按钮，发送聊天信息。若您操作正确，您的聊天信息输入框内信息将会在聊天信息展示部分所展示，并同时会清空聊天信息输入框内容。正确的结果如下图所示。
+![](\image\8.png)
+
+#### 由于IP或端口地址填写错误而引发的发送错误提示**
+若您未能正确填写IP或端口地址信息，而直接尝试发送聊天信息，您会收到如图所示警告弹窗提醒。
+![](\image\9.png)
+### 切换聊天对象
+#### 通用的切换聊天对象
+请依照“新建聊天对象”中步骤进行切换聊天对象。此方法适用于切换到新的聊天对象进行聊天和切换到历史聊天对象聊天。
+#### 快速切换历史聊天对象
+点击AoChat主界面最上方菜单栏中”切换历史聊天对象”，在弹出二级菜单栏中点击您要聊天的历史聊天对象，点击弹窗中“确认按钮”，即可完成切换。
+![](\image\10.png)![](\image\11.png)
+<br>
+若您没有历史聊天对象，则AoChat会展示下图所示菜单栏。
+![](\image\12.png)
+### 接收聊天信息
+只要您AoChat软件运行，AoChat软件就会一直为您接收聊天信息。接收到新的聊天信息会展示在AoChat主界面右侧聊天信息展示部分，同时也会为您展示消息的发送方。下图是接收到消息的示例图。
+![](\image\13.png)
+
+## 清空聊天信息
+若您不想看到太多的聊天信息，可以点击AoChat主界面的右下角的”清空”按钮即可清空全部聊天信息。<br>
+注意：AoChat并不保存任何聊天信息，清空后聊天信息不可恢复。
