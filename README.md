@@ -2,8 +2,6 @@
 ![1](https://img.shields.io/badge/AHU-AI-blue)
 ## 简介
 这是一个致力于安徽大学人工智能学院学习交流的平台<br>
-笔记会优先发布到这个网站:https://www.aoaoaoao.cn
-并会定期同步到仓库中<br>
 也可以通过ao@aoaoaoao.cn来联系到我<br>
 #### 为什么要创建这个仓库？
 我们不希望看到本应该公开的学习资料却被到处贩卖，拿来牟利<br>
