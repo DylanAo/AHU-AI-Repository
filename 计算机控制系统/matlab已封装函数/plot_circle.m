@@ -9,7 +9,6 @@ function line = plot_circle(r, center_x, center_y, a, theam)
 %输出参数:
 %   返回Line对象
 
-%   陈傲 2024.4.27 创建于 安大槐园
 switch nargin
     case 0
         r = 1;

@@ -7,7 +7,6 @@ function line = plot_damping(xi, T, a)
 %输出参数:
 %   返回Line对象
 
-%   陈傲 2024.4.27 创建于 安大槐园
 if nargin == 2
     a = 0 : 0.1 : 100;
 end

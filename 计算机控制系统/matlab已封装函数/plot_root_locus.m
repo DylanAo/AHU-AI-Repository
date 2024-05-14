@@ -7,7 +7,6 @@ function plot_root_locus(num, den, k)
 % 函数作用:
 %   绘离散系统根轨迹
 
-%   陈傲 2024.4.27 创建于 安大槐园
 if nargin < 3
     k = 1;
 end
