@@ -291,7 +291,7 @@ $$
 \subsubsection{部分分式展开法中的计算要点}
 
 \noindent 在此处，常见的换对还有:
-$$\frac{z}{z-a}\leftrightarrow z^k$$
+$$\frac{z}{z-a}\leftrightarrow a^k$$
 同时，最主要是用到Z变换的平移性质性质:
 $$
 f(t-nT) \leftrightarrow z^{-n}F(z) \quad \mbox{右移n}
@@ -528,8 +528,7 @@ $$
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=10cm,height=3.5cm]{img/4_1.png}
-	\caption{一般反馈系统框图}
+	\includegraphics[width=9.32cm,height=5.23cm]{img/4_2.png}
 \end{figure}
 \subsection{根轨迹法} 
 利用根轨迹法可以分析系统的动态性能，在z平面中画根轨迹与在s平面中画根轨迹方法\textbf{完全相同}，只不过在s平面上，我们说在左半轴内的规矩是稳定的，而在z平面上，是在单位圆内是稳定的。也就是说，按照自动控制原理中根轨迹画法画出根轨迹，然后再画一个单位圆，在圆内稳定，圆上临界稳定，圆外不稳定。
@@ -1115,7 +1114,7 @@ $$
 
 当考虑只有一个输入的n阶系统，那么k为$1\times n$，可由n个极点唯一确定，具体做法是利用系数匹配法，即:
 $$
-(z-z_0)(z-z_2)\cdots(z-z_n)=|zI-A+BK|
+(z-z_0)(z-z_1)\cdots(z-z_n)=|zI-A+BK|
 $$
 其中$z_0,z_1\cdots z_n$为\textbf{闭环系统}期望的极点。
 \subsection{输出反馈设计法}
@@ -1131,7 +1130,7 @@ $$
 $$
 在仅考虑单输入系统条件下:
 $$
-(z-z_0)(z-z_2)\cdots(z-z_n)=|zI-A+BKC|
+(z-z_0)(z-z_1)\cdots(z-z_n)=|zI-A+BKC|
 $$
 其中$z_0,z_1\cdots z_n$为\textbf{闭环系统}期望的极点。
 \subsection{状态观测器设计}
@@ -1165,7 +1164,7 @@ $$
 
 在仅考虑单输入系统条件下:
 $$
-(z-z_0)(z-z_2)\cdots(z-z_n)=|zI-A+KC|
+(z-z_0)(z-z_1)\cdots(z-z_n)=|zI-A+KC|
 $$
 其中$z_0,z_1\cdots z_n$为\textbf{观测器}期望的极点。
 

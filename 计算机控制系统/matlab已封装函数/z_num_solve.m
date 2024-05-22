@@ -1,6 +1,6 @@
 function [begin, ans_factor] = z_num_solve(divend, div, times)
 % Z_NUM_SOLVE 长除法求z逆变换
-% 将输出响应的z变换化为这种形式:y(z)=(0.368z^- 1 + 0.264z^-2)/(1-z^-1+1.638z^-2)
+% 将输出响应的z变换化为这种形式:y(z)=(0.368z^-1 + 0.264z^-2)/(1 - z^-1 + 1.638z^-2)
 % 输入参数:
 %   divend:被除数，即上式分母系数:(0 0.368 0.624)注意:没有系数要补0
 %   div:除数，即上式分子系数:(1 -1 1.638)
@@ -40,7 +40,7 @@ for i = 1 : times
     this_factor = divend_now(1) / div_base;
     div_now_factor = this_factor .* div;
     divend_now = divend_now - div_now_factor;
-    divend_now = divend_now(1, 1 + abs(begin):end);
+    divend_now = divend_now(1, 2 : end);
     divend_now = [divend_now 0];
     ans_factor = [ans_factor this_factor];
 end

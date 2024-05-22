@@ -2,7 +2,7 @@
 ![1](https://img.shields.io/badge/AHU-AI-blue)
 ## 简介
 这是一个致力于安徽大学人工智能学院学习交流的平台<br>
-你也可以通过ao@aoaoaoao.online来联系到我们<br>
+你也可以通过ahu@aoaoaoao.cn来联系到我们<br>
 #### 注意事项
 近期我们发现，有人在**CSDN和gitcode**等平台分享或复制了本仓库，并且使用DylanAo这个账户名称，对此我们想说的有如下几点:<br>
 1. 我们对分享本仓库持乐观态度，但是并**不希望**您用**DylanAo的名义**去分发本仓库
@@ -24,7 +24,7 @@
 * **部分资料为其他学院资料,可能与本学院所授课程不符,仅供参考**
 #### 如何加入我们？
 请直接pr，看到后我会进行处理的<br>
-若想要一起维护该仓库，可通过邮箱ao@aoaoaoao.online联系我<br>
+若想要一起维护该仓库，可通过邮箱ahu@aoaoaoao.cn联系我<br>
 ## 如何下载资料
 #### 全部下载
 ![](image/全部下载.gif)
@@ -58,6 +58,7 @@ git clone https://github.com/DylanAo/AHU-AI-Repository.git
   1. VScode的基础配置文件:Cpp
   2. Markdown速成手册
   3. Git使用教程
+  4. 人工智能学院实验报告模板(手写用)
 #### 专业选修课
 * 专业选修课的笔记资料等(并不是全部专选)
   1. PLC
@@ -112,5 +113,5 @@ git clone https://github.com/DylanAo/AHU-AI-Repository.git
 * 机器人机械与结构设计(机器人):相信张老师，期末有重点
 ## 写在最后
 如果你觉得资料对你有帮助的话，别忘记点个Star⭐<br>
-如果有任何疑问、建议，可直接在issue里面提及，或者给我发邮件(ao@aoaoaoao.online)，我会尽快回复的<br>
+如果有任何疑问、建议，可直接在issue里面提及，或者给我发邮件(ahu@aoaoaoao.cn)，我会尽快回复的<br>
 同时，欢迎加入我们，积极上传资料(直接PR即可)<br>
