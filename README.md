@@ -66,6 +66,7 @@ git clone https://github.com/DylanAo/AHU-AI-Repository.git
   3. Java
   4. Python
   5. 人机交互技术
+  6. 神经网络与深度学习(含实验教程及复习总结)
 #### 大一上
 * 高数上:刷仓库内卷子
 * C语言:多写书后作业的程序，或者去公开的oj等平台找题目/项目练习自学
