@@ -124,8 +124,8 @@ f5 = z / ((z + 2) ^2 * (z + 3));
 f5_t = iztrans(f5)
 %% 3
 clear; clc;
-num = [1 1 4];
-den = [5 1 4];
+num = [];
+den = [-1 -3 -5];
 sys_1 = zpk(num, den, 1)
-sys_2 = tf(num, den, 1)
+% sys_2 = tf(num, den, 1)
 

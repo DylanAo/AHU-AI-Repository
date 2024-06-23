@@ -34,4 +34,4 @@ nyquist(sys_s);
 
 subplot(3, 3, 8);
 nichols(sys_s);
-sgtitle("连续系统绘图大全图 By ChenAo From CCS ToolBox")
+sgtitle("连续系统绘图大全图 From CCS ToolBox For AHU-AI")
