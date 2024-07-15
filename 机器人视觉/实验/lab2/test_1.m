@@ -1,0 +1,47 @@
+img = imread('img/1.jpeg');
+% img = imresize(img, 0.25);
+img_r = img(:, :, 1);
+img_g = img(:, :, 2);
+img_b = img(:, :, 3);
+img_rb = img_g - img_b;
+img_rb_bin = imbinarize(img_rb, 8/255);
+img_rb_bin_fill=imfill(img_rb_bin,'holes');
+Obj=uint8(img_rb_bin_fill) .* img * 1.2;
+subplot(2,2,1);
+imshow(Obj);
+
+img = imread('img/2.jpeg');
+% img = imresize(img, 0.25);
+img_r = img(:, :, 1);
+img_g = img(:, :, 2);
+img_b = img(:, :, 3);
+img_rb = img_g - img_b;
+img_rb_bin = imbinarize(img_rb, 8/255);
+img_rb_bin_fill=imfill(img_rb_bin,'holes');
+Obj=uint8(img_rb_bin_fill) .* img * 1.2;
+subplot(2,2,2);
+imshow(Obj);
+
+img = imread('img/3.jpeg');
+% img = imresize(img, 0.25);
+img_r = img(:, :, 1);
+img_g = img(:, :, 2);
+img_b = img(:, :, 3);
+img_rb = img_g - img_b;
+img_rb_bin = imbinarize(img_rb, 8/255);
+img_rb_bin_fill=imfill(img_rb_bin,'holes');
+Obj=uint8(img_rb_bin_fill) .* img * 1.2;
+subplot(2,2,3);
+imshow(Obj);
+
+img = imread('img/4.jpeg');
+img = imresize(img, 0.25);
+img_r = img(:, :, 1);
+img_g = img(:, :, 2);
+img_b = img(:, :, 3);
+img_rb = img_g - img_b;
+img_rb_bin = imbinarize(img_rb, 8/255);
+img_rb_bin_fill=imfill(img_rb_bin,'holes');
+Obj=uint8(img_rb_bin_fill) .* img * 1.2;
+subplot(2,2,4);
+imshow(Obj);
