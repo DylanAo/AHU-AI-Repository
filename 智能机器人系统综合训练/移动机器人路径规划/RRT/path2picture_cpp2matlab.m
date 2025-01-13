@@ -1,0 +1,16 @@
+clear;
+clc;
+matrix = readmatrix('matrix.txt');
+point_tree = readmatrix('point_tree.txt');
+fclose("all");
+hold on;
+ax = gca;
+ax.XAxis.Visible='off';
+ax.YAxis.Visible='off';
+ax.ZAxis.Visible='off';
+xlim([0 21]);
+ylim([0 21]);
+title('RTT轨迹图');
+image(matrix, 'CDataMapping', 'scaled');
+%point_tree = point_tree - 1;
+plot(point_tree(:, 2), point_tree(:, 1), 'r');

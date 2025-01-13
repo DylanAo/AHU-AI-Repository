@@ -1,0 +1,19 @@
+clc;
+close all;
+clear;
+X = rand(300,2); %每行一个样本，每列一个特征
+X(sum(X.^2,2)>0.5&sum((1-X).^2,2)>0.5,:) = [];
+k = 3;%k-means的参数
+C = X(randperm(end,k),:);
+for j = 1:100
+    for i = 1:size(X,1)
+        [~,list] = sort(pdist2(X(i,:),C),'ascend');
+        Y(i) = list(1);
+    end
+    C(Y(i),:) = mean([C(Y(i),:);X(i,:)],1);
+end
+hold on;box on;
+for i = 1:k
+    B = (Y == i);
+    plot(X(B,1),X(B,2),'ok','MarkerFaceColor',rand(1,3));
+end
