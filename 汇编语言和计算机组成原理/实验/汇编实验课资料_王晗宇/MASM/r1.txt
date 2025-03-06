@@ -1,0 +1,16 @@
+data segment
+  info db 'hello!', '$'
+data ends
+
+code segment 
+assume cs:code
+start:
+  mov ax,data
+  mov ds,ax
+  mov dx,offset info
+  mov ax,0900
+  int 21
+  mov ax,4c00
+  int 21
+code ends
+  end start
