@@ -1,0 +1,1 @@
+WA2114001王晗宇天文望远镜自动控制校准项目同https://mp.weixin.qq.com/s/4zVBYYFE-c5_C-AxWC-xQA
