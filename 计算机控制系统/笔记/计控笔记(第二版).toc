@@ -11,23 +11,23 @@
 \contentsline {section}{\numberline {1.3}Z变换与逆Z变换}{7}{section.1.3}%
 \contentsline {subsection}{\numberline {1.3.1}Z变换}{7}{subsection.1.3.1}%
 \contentsline {subsubsection}{部分分式展开法}{7}{subsubsection*.5}%
-\contentsline {subsubsection}{留数法}{7}{subsubsection*.6}%
+\contentsline {subsubsection}{留数法}{9}{subsubsection*.6}%
 \contentsline {subsection}{\numberline {1.3.2}逆Z变换}{9}{subsection.1.3.2}%
 \contentsline {subsubsection}{多项式展开与系数快速确定}{9}{subsubsection*.7}%
 \contentsline {subsubsection}{部分分式展开法中的计算要点}{11}{subsubsection*.8}%
 \contentsline {subsubsection}{留数法}{12}{subsubsection*.9}%
-\contentsline {section}{\numberline {1.4}离散系统的性能分析}{12}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}s平面到z平面}{12}{subsection.1.4.1}%
+\contentsline {section}{\numberline {1.4}离散系统的性能分析}{13}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}s平面到z平面}{13}{subsection.1.4.1}%
 \contentsline {subsection}{\numberline {1.4.2}稳定判据}{13}{subsection.1.4.2}%
 \contentsline {subsubsection}{w变换及w域的劳斯稳定判据}{13}{subsubsection*.10}%
 \contentsline {subsubsection}{二阶系统z域直接判定法}{14}{subsubsection*.11}%
-\contentsline {subsubsection}{z域中朱利稳定判据}{14}{subsubsection*.12}%
+\contentsline {subsubsection}{z域中朱利稳定判据}{15}{subsubsection*.12}%
 \contentsline {subsubsection}{修尔-科恩稳定判据}{16}{subsubsection*.13}%
 \contentsline {subsection}{\numberline {1.4.3}稳态误差}{17}{subsection.1.4.3}%
 \contentsline {subsubsection}{求解稳态误差的一般方法}{17}{subsubsection*.14}%
-\contentsline {subsubsection}{静态误差系数法}{17}{subsubsection*.15}%
+\contentsline {subsubsection}{静态误差系数法}{18}{subsubsection*.15}%
 \contentsline {subsection}{\numberline {1.4.4}根轨迹法}{18}{subsection.1.4.4}%
-\contentsline {subsection}{\numberline {1.4.5}极点分布对动态性能影响}{18}{subsection.1.4.5}%
+\contentsline {subsection}{\numberline {1.4.5}极点分布对动态性能影响}{19}{subsection.1.4.5}%
 \contentsline {chapter}{\numberline {第二章\hspace {.3em}}设计离散系统}{20}{chapter.2}%
 \contentsline {section}{\numberline {2.1}间接设计法}{21}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}常用的离散化方法}{21}{subsection.2.1.1}%
@@ -44,20 +44,20 @@
 \contentsline {subsection}{\numberline {2.2.1}最少拍设计法}{29}{subsection.2.2.1}%
 \contentsline {subsubsection}{阻尼因子法}{30}{subsubsection*.23}%
 \contentsline {subsection}{\numberline {2.2.2}史密斯预估器}{31}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}大林算法}{33}{subsection.2.2.3}%
-\contentsline {subsubsection}{振铃现象}{34}{subsubsection*.24}%
-\contentsline {section}{\numberline {2.3}状态空间设计法}{35}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}状态空间方程}{35}{subsection.2.3.1}%
-\contentsline {subsubsection}{求状态空间方程}{36}{subsubsection*.25}%
-\contentsline {subsubsection}{求解状态空间方程}{38}{subsubsection*.26}%
-\contentsline {subsubsection}{能控性与能观性}{39}{subsubsection*.27}%
-\contentsline {subsection}{\numberline {2.3.2}状态反馈设计法}{40}{subsection.2.3.2}%
-\contentsline {subsubsection}{状态反馈控制系统}{41}{subsubsection*.28}%
+\contentsline {subsection}{\numberline {2.2.3}大林算法}{32}{subsection.2.2.3}%
+\contentsline {subsubsection}{振铃现象}{35}{subsubsection*.24}%
+\contentsline {section}{\numberline {2.3}状态空间设计法}{36}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}状态空间方程}{36}{subsection.2.3.1}%
+\contentsline {subsubsection}{求状态空间方程}{37}{subsubsection*.25}%
+\contentsline {subsubsection}{求解状态空间方程}{39}{subsubsection*.26}%
+\contentsline {subsubsection}{能控性与能观性}{40}{subsubsection*.27}%
+\contentsline {subsection}{\numberline {2.3.2}状态反馈设计法}{41}{subsection.2.3.2}%
+\contentsline {subsubsection}{状态反馈控制系统}{42}{subsubsection*.28}%
 \contentsline {subsubsection}{闭环Z特征方程}{42}{subsubsection*.29}%
-\contentsline {subsubsection}{状态反馈矩阵K的求法}{42}{subsubsection*.30}%
-\contentsline {subsection}{\numberline {2.3.3}输出反馈设计法}{42}{subsection.2.3.3}%
+\contentsline {subsubsection}{状态反馈矩阵K的求法}{43}{subsubsection*.30}%
+\contentsline {subsection}{\numberline {2.3.3}输出反馈设计法}{43}{subsection.2.3.3}%
 \contentsline {subsubsection}{特征方程与K矩阵求法}{43}{subsubsection*.31}%
-\contentsline {subsection}{\numberline {2.3.4}状态观测器设计}{43}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.4}状态观测器设计}{44}{subsection.2.3.4}%
 \contentsline {subsubsection}{全维状态观测器的设计}{44}{subsubsection*.32}%
 \contentsline {subsubsection}{降维状态观测器}{45}{subsubsection*.33}%
 \contentsline {subsection}{\numberline {2.3.5}带状态观测器的状态反馈系统}{46}{subsection.2.3.5}%
