@@ -1,0 +1,11 @@
+
+# vscode 配置
+.vscode/
+# vs 配置
+.vs/
+# opencode 配置
+.opencode/
+# 编辑器临时文件
+*.swp
+*.swo
+*~
